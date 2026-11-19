@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Strategy Lab</title>
+<meta name="description" content="Strategy lab by Simplificate: the seven questions behind a growth strategy for B2B tech companies, a two minute strategy check, and a sample Strategy on a Page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F6F7FB; --surface:#FFFFFF; --surface2:#EEF1F8; --ink:#1E222A; --muted:#626973; --line:#DFE3EE;
+  --accent:#7A1F3D; --accent-fg:#FFFFFF; --soft:#F6E6EC;
+  --s1:#F3D9E1; --s2:#E2AFC0; --s3:#C97A95; --s4:#AA4D6E; --s5:#8E2F52; --s6:#74203F; --s7:#5A1430;
+  --ok:#1F7A55; --okbg:#E3F3EA; --mid:#4A505A; --midbg:#E9ECF2; --gap:#B45309; --gapbg:#FBEBD9;
+  --body:"Inter","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000000; --surface:#111214; --surface2:#1C1D21; --ink:#ECEDEF; --muted:#A4A9B0; --line:#2A2C32;
+  --accent:#E8A0B8; --accent-fg:#000000; --soft:#2A1119;
+  --ok:#5CC99A; --okbg:#10291D; --mid:#C6CAD0; --midbg:#1C1D21; --gap:#F5A35B; --gapbg:#2E1D0E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#111214; --surface2:#1C1D21; --ink:#ECEDEF; --muted:#A4A9B0; --line:#2A2C32;
+  --accent:#E8A0B8; --accent-fg:#000000; --soft:#2A1119;
+  --ok:#5CC99A; --okbg:#10291D; --mid:#C6CAD0; --midbg:#1C1D21; --gap:#F5A35B; --gapbg:#2E1D0E; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+h1,h2,h3,h4,p{margin:0}
+h1{font-size:clamp(40px,6.4vw,78px);line-height:1;font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+h1 span{color:var(--accent)}
+h2{font-size:clamp(25px,3.2vw,38px);font-weight:700;line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:18px;font-weight:700;line-height:1.3}
+a{color:inherit}
+.eyebrow{font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
+.eyebrow::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
+.lead{font-size:17px;max-width:70ch;color:var(--muted)}
+
+header{display:grid;gap:16px;margin-bottom:22px}
+header::after{content:"";display:block;height:6px;border-radius:999px;margin-top:6px;
+  background:linear-gradient(90deg,var(--s1) 0 14.28%,var(--s2) 0 28.57%,var(--s3) 0 42.86%,var(--s4) 0 57.14%,var(--s5) 0 71.43%,var(--s6) 0 85.71%,var(--s7) 0)}
+.tagrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.byline{display:inline-block;border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:700;font-size:13px;letter-spacing:.04em;line-height:1.2}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.themebtn{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:6px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.themebtn:hover{border-color:var(--accent);color:var(--accent)}
+.themebtn .ti{width:14px;height:14px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);border-radius:999px;background:var(--surface);padding:5px 12px;font-size:13.5px}
+.chip b{color:var(--accent);margin-right:6px}
+
+.sticky{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--line);margin-inline:-20px;padding-inline:20px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;padding-block:10px;font-size:13.5px;font-weight:600}
+.jump a{text-decoration:none;padding:6px 11px;border-radius:999px;background:var(--surface2)}
+.jump a:hover{background:var(--line)}
+@media (max-width:640px){.jump{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}}
+a:focus-visible,button:focus-visible,input:focus-visible+span{outline:2px solid var(--accent);outline-offset:3px}
+
+section{margin-top:64px;scroll-margin-top:64px}
+.sec-head{display:grid;gap:10px;margin-bottom:22px}
+.sec-head p{max-width:70ch;color:var(--muted)}
+
+/* map */
+.map{display:grid;gap:14px}
+.stage{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center}
+.stage::before{content:"";position:absolute;left:21px;width:2px;top:-7px;bottom:-7px;background:var(--ink)}
+.stage:first-child::before{top:50%}
+.stage:last-child::before{bottom:50%}
+.stage .dot{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--sc);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center;box-shadow:0 0 0 4px var(--bg)}
+.stage .dot.l{color:#5A1430}
+.stage .box{display:grid;grid-template-columns:200px minmax(0,1fr) 260px;gap:18px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px 20px}
+.stage .q{color:var(--muted);font-size:15px}
+.stage .out{font-size:14px}
+.stage .out b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+@media (max-width:860px){.stage .box{grid-template-columns:1fr;gap:6px}}
+
+/* check */
+.check{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:920px){.check{grid-template-columns:1fr}}
+.qs{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:8px 20px}
+.qgroup{padding:16px 0;border-bottom:1px solid var(--line)}
+.qgroup:last-child{border-bottom:0}
+.qgroup h3{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.qgroup h3 .dot{width:10px;height:10px;border-radius:50%;background:var(--sc)}
+.q{border:0;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.q:last-child{margin-bottom:0}
+.q legend{padding:0;font-size:15px;font-weight:600;margin-bottom:8px}
+.ans{display:flex;gap:6px;flex-wrap:wrap}
+.ans label{position:relative;cursor:pointer}
+.ans input{position:absolute;opacity:0;width:1px;height:1px}
+.ans span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13.5px;font-weight:600;background:var(--bg)}
+.ans label:hover span{border-color:var(--accent)}
+.ans input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+
+.result{position:sticky;top:76px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:16px}
+@media (max-width:920px){.result{position:static}}
+.score{display:flex;align-items:baseline;gap:10px}
+.score b{font-size:44px;font-weight:800;line-height:1;color:var(--accent)}
+.score span{color:var(--muted);font-size:14px}
+.rows{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px}
+.badge{border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.badge.ok{background:var(--okbg);color:var(--ok)}
+.badge.mid{background:var(--midbg);color:var(--mid)}
+.badge.gap{background:var(--gapbg);color:var(--gap)}
+.badge.na{background:var(--surface2);color:var(--muted)}
+.gaps{display:grid;gap:10px}
+.gaps p{font-size:14px;color:var(--muted)}
+.gaps p b{color:var(--ink)}
+.note{font-size:13px;color:var(--muted)}
+
+/* sample */
+.sop{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;overflow:hidden}
+.sop-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;padding:18px 20px;border-bottom:1.5px solid var(--line)}
+.sop-head h3{font-size:20px}
+.sop-head p{color:var(--muted);font-size:14px}
+.tag{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;background:var(--soft);color:var(--accent)}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.fields .field:last-child{grid-column:1/-1}
+@media (max-width:900px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.fields{grid-template-columns:1fr}}
+.field{padding:16px 20px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);display:grid;gap:6px;align-content:start}
+.field .k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.field .v{font-size:15px}
+.field .src{justify-self:start;font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.field.locked .v{display:grid;gap:7px;padding-top:4px}
+.field.locked .v i{display:block;height:9px;border-radius:999px;background:var(--surface2)}
+.field.locked .v i:nth-child(2){width:82%}.field.locked .v i:nth-child(3){width:64%}
+.lock{justify-self:start;display:inline-flex;gap:6px;align-items:center;font-size:12.5px;font-weight:600;color:var(--muted)}
+.lock svg{width:13px;height:13px}
+.sop-foot{padding:14px 20px;font-size:13px;color:var(--muted)}
+
+/* cta */
+.cta{background:var(--accent);color:var(--accent-fg);border-radius:22px;padding:clamp(24px,4vw,40px);display:grid;gap:14px}
+.cta h2{color:var(--accent-fg)}
+.cta p{max-width:64ch;opacity:.92}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;border-radius:999px;padding:11px 20px;border:1.5px solid var(--accent-fg)}
+.btn.p{background:var(--accent-fg);color:var(--accent)}
+.btn:not(.p){color:var(--accent-fg)}
+.btn:hover{opacity:.9}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="tagrow">
+    <span class="byline">Strategy lab by Simplificate</span>
+    <span class="kicker">For B2B tech companies</span>
+    <button class="themebtn" id="themebtn" type="button"><span class="ti" aria-hidden="true"></span><span id="themelabel">Dark mode</span></button>
+  </div>
+  <h1><span>Strategy</span> Lab</h1>
+  <p class="lead">A growth strategy answers seven questions before any budget moves. This lab shows the questions, checks which ones your company can answer today, and shows what the finished strategy looks like for a sample company.</p>
+  <div class="chips">
+    <span class="chip"><b>Stages</b>7</span>
+    <span class="chip"><b>Check</b>14 questions, two minutes</span>
+    <span class="chip"><b>Output</b>Strategy on a Page</span>
+  </div>
+</header>
+
+<div class="sticky">
+  <nav class="jump" aria-label="Sections"><a href="#map">The seven questions</a><a href="#check">Strategy check</a><a href="#sample">Sample strategy</a><a href="#next">Next step</a></nav>
+</div>
+
+<section id="map">
+  <div class="sec-head">
+    <span class="eyebrow">The seven questions</span>
+    <h2>What a growth strategy has to answer</h2>
+    <p>Each stage answers one question, in this order. Channels and budget come last, once the constraint, the customers and the reason they choose you are clear.</p>
+  </div>
+  <div class="map" id="mapgrid"></div>
+</section>
+
+<section id="check">
+  <div class="sec-head">
+    <span class="eyebrow">Strategy check</span>
+    <h2>Which questions can your company answer today?</h2>
+    <p>Two questions per stage. Answer honestly: if it is not written down and agreed, the answer is partly or no.</p>
+  </div>
+  <div class="check">
+    <form class="qs" id="qs" autocomplete="off"></form>
+    <aside class="result" aria-live="polite">
+      <span class="eyebrow">Your result</span>
+      <div class="score"><b id="ready">0</b><span id="readytxt">of 7 stages ready</span></div>
+      <div class="rows" id="rows"></div>
+      <div class="gaps" id="gaps"></div>
+      <p class="note">The check shows where the gaps are. Closing them takes your own data: the audit, the research and the decisions behind each stage.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="sample">
+  <div class="sec-head">
+    <span class="eyebrow">Sample strategy</span>
+    <h2>What the finished strategy looks like</h2>
+    <p>The strategy comes together on one page the whole leadership team can work from. Every claim on it is marked as data, research or a hypothesis to test. Below is a sample for a fictional B2B tech company.</p>
+  </div>
+  <div class="sop">
+    <div class="sop-head">
+      <div><h3>Strategy on a Page: Northlane</h3><p>Project software for engineering firms</p></div>
+      <span class="tag">Sample company, fictional figures</span>
+    </div>
+    <div class="fields" id="fields"></div>
+    <p class="sop-foot">Fields marked as built in the engagement come from the client's own audit, research and decision workshops.</p>
+  </div>
+</section>
+
+<section id="next">
+  <div class="cta">
+    <h2 id="ctah">Build this on your own data</h2>
+    <p id="ctap">The full package starts with a growth audit of your own channels and numbers, and ends with your Strategy on a Page, a plan and the execution behind it.</p>
+    <div class="btns">
+      <a class="btn p" href="https://calendly.com/robertacunha-kgab/30min" target="_blank" rel="noopener">Book an introductory call</a>
+      <a class="btn" href="https://www.simplificate.nl/#full-package" target="_blank" rel="noopener">See the full package</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+"use strict";
+var STAGES=[
+ {id:"goal",n:"Growth goal",q:"Where are you now, where must you be in three years, and what limits growth today?",out:"The growth gap, a business check and the constraint behind it",
+  qs:["Do you have a three year revenue target, and know the growth per year it requires?","Can you name the one part of your revenue engine that limits growth today?"],
+  gap:"Without a named constraint, budget goes to the channels that are easiest to buy, not to the part that limits growth."},
+ {id:"play",n:"Where to play",q:"Which customers, markets and offerings should you grow in, and which should you leave out?",out:"Your top opportunities, your ICP, the segments not in play and a one sentence diagnosis",
+  qs:["Is your ideal customer profile based on data from your best customers?","Have you decided which segments or markets you will not pursue?"],
+  gap:"Spend and sales time spread across accounts that rarely close or renew."},
+ {id:"win",n:"How to win",q:"Why will those customers choose you over every alternative, including doing nothing?",out:"Your core advantage and a positioning statement for each ICP",
+  qs:["Can you state in one sentence why your ICP chooses you over the alternatives?","Do you know, in your customers' own words, what makes them switch and what holds them back?"],
+  gap:"Messaging competes on features and price, which competitors can copy."},
+ {id:"enable",n:"Growth enablers",q:"Which capabilities, systems or capacity does the strategy need that you lack today?",out:"Enablers with an owner and a date",
+  qs:["Do you know which capabilities or systems your growth plan depends on that you do not have yet?","Does each missing capability have an owner and a date?"],
+  gap:"Plans stall at execution because the data, tools or people they need are not in place."},
+ {id:"prio",n:"Prioritise how to grow",q:"Which growth moves come first, and do they reach the goal on your margins?",out:"Growth moves ranked and checked against your unit economics",
+  qs:["Are your growth initiatives ranked, rather than all running at once?","Is each one checked against your CAC, payback and margins before it gets budget?"],
+  gap:"Too many initiatives run at once, and none gets enough budget to prove itself."},
+ {id:"plan",n:"Plan",q:"What are the objectives, the KPIs and the budget behind them?",out:"Objectives, a KPI scorecard, a budget split and a measurement plan",
+  qs:["Do you have a short list of growth objectives, each with a KPI target and an owner?","Is your budget split decided by the strategy, rather than by last year's budget?"],
+  gap:"Budget follows last year's split, and results cannot be tied back to an objective."},
+ {id:"exec",n:"Execute",q:"Which plays run first, and how is each one tested and reviewed?",out:"Your first 90 days, test rules and a review rhythm",
+  qs:["Is every new initiative tested before it gets full budget?","Do you review results every month and reallocate budget every quarter?"],
+  gap:"Winners and losers look the same, because nothing is read against a control."}
+];
+var SC=["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)","var(--s7)"];
+var FIELDS=[
+ {k:"Growth goal",v:"€4.2m ARR today to €8m by 2029, about 24% growth per year.",src:"Data"},
+ {k:"The constraint",v:"Too few qualified demos from mid-market firms, the segment Northlane wins most.",src:"Data"},
+ {k:"Diagnosis",v:"Northlane wins engineering firms with 50 to 250 staff, but spends most of its budget on enterprise accounts it rarely closes.",src:"Data"},
+ {k:"Where we play",v:"Engineering firms with 50 to 250 staff in the Netherlands and Germany.",src:"Research"},
+ {k:"Where we do not play"},{k:"How we win"},{k:"What it takes"},{k:"Growth focus"},
+ {k:"Growth objectives"},{k:"North Star and headline KPIs"},{k:"Budget and proof"},{k:"First 90 days"},
+ {k:"Review rhythm",v:"Monthly scorecard, quarterly budget reallocation, yearly reset from the growth goal."}
+];
+var LOCK='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function sset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+/* map */
+document.getElementById("mapgrid").innerHTML=STAGES.map(function(s,i){
+  return '<div class="stage" style="--sc:'+SC[i]+'"><span class="dot'+(i<2?' l':'')+'">0'+(i+1)+'</span><div class="box"><h3>'+esc(s.n)+'</h3><p class="q">'+esc(s.q)+'</p><p class="out"><b>You leave with</b>'+esc(s.out)+'</p></div></div>';
+}).join("");
+
+/* check */
+var A={};try{A=JSON.parse(sget("sl_answers")||"{}")||{}}catch(e){A={}}
+var OPTS=[["2","Yes"],["1","Partly"],["0","No"]];
+document.getElementById("qs").innerHTML=STAGES.map(function(s,i){
+  return '<div class="qgroup" style="--sc:'+SC[i]+'"><h3><span class="dot"></span>0'+(i+1)+' '+esc(s.n)+'</h3>'+s.qs.map(function(q,j){
+    var name=s.id+j;
+    return '<fieldset class="q"><legend>'+esc(q)+'</legend><div class="ans">'+OPTS.map(function(o){
+      return '<label><input type="radio" name="'+name+'" value="'+o[0]+'"'+(A[name]===o[0]?" checked":"")+'><span>'+o[1]+'</span></label>';
+    }).join("")+'</div></fieldset>';
+  }).join("")+'</div>';
+}).join("");
+document.getElementById("qs").addEventListener("change",function(e){if(e.target.name){A[e.target.name]=e.target.value;sset("sl_answers",JSON.stringify(A));render();}});
+
+function render(){
+  var ready=0,answered=0,gaps=[],rows="";
+  STAGES.forEach(function(s){
+    var a0=A[s.id+"0"],a1=A[s.id+"1"],st,cls;
+    if(a0==null||a1==null){st="Not answered";cls="na";}
+    else{answered++;var t=+a0+ +a1;
+      if(t===4){st="Ready";cls="ok";ready++;}
+      else if(t>=2){st="Partly";cls="mid";gaps.push(s);}
+      else{st="Gap";cls="gap";gaps.push(s);}}
+    rows+='<div class="row"><span>'+esc(s.n)+'</span><span class="badge '+cls+'">'+st+'</span></div>';
+  });
+  document.getElementById("rows").innerHTML=rows;
+  document.getElementById("ready").textContent=ready;
+  document.getElementById("readytxt").textContent="of 7 stages ready"+(answered<7?" ("+answered+" of 7 answered)":"");
+  document.getElementById("gaps").innerHTML=gaps.length?'<span class="eyebrow">What the gaps tend to cause</span>'+gaps.map(function(s){return '<p><b>'+esc(s.n)+':</b> '+esc(s.gap)+'</p>'}).join(""):"";
+  var h=document.getElementById("ctah"),p=document.getElementById("ctap");
+  if(answered===7&&gaps.length){h.textContent="Your check shows gaps in "+gaps.length+" of 7 stages";p.textContent="The full package closes them on your own data. It starts with a growth audit of your channels and numbers, and ends with your Strategy on a Page, a plan and the execution behind it.";}
+  else if(answered===7){h.textContent="All seven stages answered";p.textContent="The full package puts your strategy to work: a growth audit of your own channels and numbers, a plan with a budget split, and the execution behind it.";}
+  else{h.textContent="Build this on your own data";p.textContent="The full package starts with a growth audit of your own channels and numbers, and ends with your Strategy on a Page, a plan and the execution behind it.";}
+}
+render();
+
+/* sample */
+document.getElementById("fields").innerHTML=FIELDS.map(function(f){
+  if(f.v)return '<div class="field"><span class="k">'+esc(f.k)+'</span><p class="v">'+esc(f.v)+'</p>'+(f.src?'<span class="src">'+f.src+'</span>':'')+'</div>';
+  return '<div class="field locked"><span class="k">'+esc(f.k)+'</span><div class="v" aria-hidden="true"><i></i><i></i><i></i></div><span class="lock">'+LOCK+'Built in the engagement</span></div>';
+}).join("");
+
+/* theme */
+var root=document.documentElement,lbl=document.getElementById("themelabel");
+function sysDark(){return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function curDark(){var t=root.getAttribute("data-theme");return t?t==="dark":sysDark()}
+function setLabel(){lbl.textContent=curDark()?"Light mode":"Dark mode"}
+var st=sget("sl_theme");if(st==="dark"||st==="light")root.setAttribute("data-theme",st);
+setLabel();
+document.getElementById("themebtn").addEventListener("click",function(){var n=curDark()?"light":"dark";root.setAttribute("data-theme",n);sset("sl_theme",n);setLabel();});
+if(window.matchMedia)matchMedia("(prefers-color-scheme: dark)").addEventListener("change",setLabel);
+})();
+</script>
+</body>
+</html>
