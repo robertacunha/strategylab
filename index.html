@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Strategy Lab</title>
-<meta name="description" content="Strategy lab by Simplificate: the seven questions behind a growth strategy for B2B tech companies, a two minute strategy check, and a sample Strategy on a Page.">
+<meta name="description" content="Strategy lab by Simplificate: the seven questions behind a growth strategy for B2B and B2C companies, a two minute strategy check, and a sample Strategy on a Page.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
@@ -118,6 +118,10 @@ section{margin-top:64px;scroll-margin-top:64px}
 .sop-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;padding:18px 20px;border-bottom:1.5px solid var(--line)}
 .sop-head h3{font-size:20px}
 .sop-head p{color:var(--muted);font-size:14px}
+.switch{display:flex;gap:6px;padding:14px 20px 0;flex-wrap:wrap}
+.switch button{border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.switch button:hover{border-color:var(--accent)}
+.switch button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
 .tag{border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;background:var(--soft);color:var(--accent)}
 .fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .fields .field:last-child{grid-column:1/-1}
@@ -133,6 +137,17 @@ section{margin-top:64px;scroll-margin-top:64px}
 .lock{justify-self:start;display:inline-flex;gap:6px;align-items:center;font-size:12.5px;font-weight:600;color:var(--muted)}
 .lock svg{width:13px;height:13px}
 .sop-foot{padding:14px 20px;font-size:13px;color:var(--muted)}
+
+/* includes */
+.inc{margin-top:28px}
+.inc h3{font-size:20px}
+.inc-lead{color:var(--muted);font-size:15px;margin-top:4px}
+.inc-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (max-width:1100px){.inc-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.inc-t:nth-child(n+5){grid-column:span 1}}
+@media (max-width:700px){.inc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inc-t:last-child{grid-column:1/-1}}
+.inc-t{background:var(--surface);border:1.5px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;padding:14px 16px;display:grid;gap:4px;align-content:start}
+.inc-t b{font-size:16px;font-weight:800;color:var(--accent)}
+.inc-t span{font-size:14px;color:var(--muted)}
 
 /* cta */
 .cta{background:var(--accent);color:var(--accent-fg);border-radius:22px;padding:clamp(24px,4vw,40px);display:grid;gap:14px}
@@ -151,7 +166,7 @@ section{margin-top:64px;scroll-margin-top:64px}
 <header>
   <div class="tagrow">
     <span class="byline">Strategy lab by Simplificate</span>
-    <span class="kicker">For B2B tech companies</span>
+    <span class="kicker">For B2B and B2C companies</span>
     <button class="themebtn" id="themebtn" type="button"><span class="ti" aria-hidden="true"></span><span id="themelabel">Dark mode</span></button>
   </div>
   <h1><span>Strategy</span> Lab</h1>
@@ -197,16 +212,30 @@ section{margin-top:64px;scroll-margin-top:64px}
 <section id="sample">
   <div class="sec-head">
     <span class="eyebrow">Sample strategy</span>
-    <h2>What the finished strategy looks like</h2>
-    <p>The strategy comes together on one page the whole leadership team can work from. Every claim on it is marked as data, research or a hypothesis to test. Below is a sample for a fictional B2B tech company.</p>
+    <h2>How your strategy comes together</h2>
+    <p>The strategy comes together on one page the whole leadership team can work from. Every claim on it is marked as data, research or a hypothesis to test. Pick one of two samples: a fictional B2B tech company or a fictional B2C subscription app.</p>
   </div>
   <div class="sop">
+    <div class="switch" role="tablist" aria-label="Sample company"><button type="button" role="tab" data-s="b2b">B2B tech</button><button type="button" role="tab" data-s="b2c">B2C subscription</button></div>
     <div class="sop-head">
-      <div><h3>Strategy on a Page: Northlane</h3><p>Project software for engineering firms</p></div>
+      <div><h3 id="soptitle">Strategy on a Page: Northlane</h3><p id="sopsub">Project software for engineering firms</p></div>
       <span class="tag">Sample company, fictional figures</span>
     </div>
     <div class="fields" id="fields"></div>
     <p class="sop-foot">Fields marked as built in the engagement come from the client's own audit, research and decision workshops.</p>
+  </div>
+  <div class="inc">
+    <h3>What the engagement includes</h3>
+    <p class="inc-lead">The page above is the summary. Behind it sits the work that produces each decision.</p>
+    <div class="inc-grid">
+      <div class="inc-t"><b>Kickoff</b><span>Mandate, scope, decision owners and a data request</span></div>
+      <div class="inc-t"><b>Growth audit</b><span>All channels, unit economics and customer data</span></div>
+      <div class="inc-t"><b>Interviews</b><span>Your team and your customers, including lost deals</span></div>
+      <div class="inc-t"><b>3 decision workshops</b><span>The diagnosis, the strategy choice, and the plan with its budget</span></div>
+      <div class="inc-t"><b>7 stage pages</b><span>One page per stage, each with its own decisions</span></div>
+      <div class="inc-t"><b>Plan and budget</b><span>Objectives, a KPI scorecard, a budget split and a measurement plan</span></div>
+      <div class="inc-t"><b>First 90 days</b><span>Ranked plays, test rules and a review rhythm</span></div>
+    </div>
   </div>
 </section>
 
@@ -249,15 +278,21 @@ var STAGES=[
   gap:"Winners and losers look the same, because nothing is read against a control."}
 ];
 var SC=["var(--s1)","var(--s2)","var(--s3)","var(--s4)","var(--s5)","var(--s6)","var(--s7)"];
-var FIELDS=[
- {k:"Growth goal",v:"€4.2m ARR today to €8m by 2029, about 24% growth per year.",src:"Data"},
- {k:"The constraint",v:"Too few qualified demos from mid-market firms, the segment Northlane wins most.",src:"Data"},
- {k:"Diagnosis",v:"Northlane wins engineering firms with 50 to 250 staff, but spends most of its budget on enterprise accounts it rarely closes.",src:"Data"},
- {k:"Where we play",v:"Engineering firms with 50 to 250 staff in the Netherlands and Germany.",src:"Research"},
- {k:"Where we do not play"},{k:"How we win"},{k:"What it takes"},{k:"Growth focus"},
- {k:"Growth objectives"},{k:"North Star and headline KPIs"},{k:"Budget and proof"},{k:"First 90 days"},
- {k:"Review rhythm",v:"Monthly scorecard, quarterly budget reallocation, yearly reset from the growth goal."}
-];
+var LOCKED=[{k:"Where we do not play"},{k:"How we win"},{k:"What it takes"},{k:"Growth focus"},
+ {k:"Growth objectives"},{k:"North Star and headline KPIs"},{k:"Budget and proof"},{k:"First 90 days"}];
+var RHYTHM={k:"Review rhythm",v:"Monthly scorecard, quarterly budget reallocation, yearly reset from the growth goal."};
+var SAMPLES={
+ b2b:{name:"Northlane",sub:"Project software for engineering firms",fields:[
+  {k:"Growth goal",v:"€4.2m ARR today to €8m by 2029, about 24% growth per year.",src:"Data"},
+  {k:"The constraint",v:"Too few qualified demos from mid-market firms, the segment Northlane wins most.",src:"Data"},
+  {k:"Diagnosis",v:"Northlane wins engineering firms with 50 to 250 staff, but spends most of its budget on enterprise accounts it rarely closes.",src:"Data"},
+  {k:"Where we play",v:"Engineering firms with 50 to 250 staff in the Netherlands and Germany.",src:"Research"}]},
+ b2c:{name:"Pacewell",sub:"Running coach app on a monthly plan",fields:[
+  {k:"Growth goal",v:"€3.1m recurring revenue today to €6m by 2029, about 25% growth per year.",src:"Data"},
+  {k:"The constraint",v:"Too many subscribers cancel in the first 60 days, before the training habit forms.",src:"Data"},
+  {k:"Diagnosis",v:"Pacewell keeps runners who train for a race, but most paid spend goes to broad fitness audiences who cancel early.",src:"Data"},
+  {k:"Where we play",v:"Recreational runners in the Netherlands and Belgium training for a race or a distance goal.",src:"Research"}]}
+};
 var LOCK='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -304,10 +339,20 @@ function render(){
 render();
 
 /* sample */
-document.getElementById("fields").innerHTML=FIELDS.map(function(f){
+function field(f){
   if(f.v)return '<div class="field"><span class="k">'+esc(f.k)+'</span><p class="v">'+esc(f.v)+'</p>'+(f.src?'<span class="src">'+f.src+'</span>':'')+'</div>';
   return '<div class="field locked"><span class="k">'+esc(f.k)+'</span><div class="v" aria-hidden="true"><i></i><i></i><i></i></div><span class="lock">'+LOCK+'Built in the engagement</span></div>';
-}).join("");
+}
+function showSample(key){
+  var s=SAMPLES[key]||SAMPLES.b2b;
+  document.getElementById("soptitle").textContent="Strategy on a Page: "+s.name;
+  document.getElementById("sopsub").textContent=s.sub;
+  document.getElementById("fields").innerHTML=s.fields.concat(LOCKED,[RHYTHM]).map(field).join("");
+  [].forEach.call(document.querySelectorAll(".switch button"),function(b){b.setAttribute("aria-selected",b.getAttribute("data-s")===key?"true":"false")});
+  sset("sl_sample",key);
+}
+[].forEach.call(document.querySelectorAll(".switch button"),function(b){b.addEventListener("click",function(){showSample(b.getAttribute("data-s"))})});
+var ss=sget("sl_sample");showSample(ss==="b2c"?"b2c":"b2b");
 
 /* theme */
 var root=document.documentElement,lbl=document.getElementById("themelabel");
